@@ -1,0 +1,25 @@
+.home-page {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  .header {
+    background-image: linear-gradient(#ee4c77 0%, #0d0430 400%);
+    flex: 0;
+    img {
+      padding: gr(30);
+    }
+  }
+  .content-page-home {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    p {
+      color: #383743;
+      font-size: gr(32);
+      line-height: 1.22;
+      letter-spacing: gr(-0.45);
+    }
+  }
+}
