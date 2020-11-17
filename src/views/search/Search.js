@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import logo from '../../assets/img/logo-nav.png';
-import { Search} from 'react-bootstrap-icons';
-export default class Home extends Component {
+
+export default class Search extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -14,12 +14,9 @@ export default class Home extends Component {
       <div className="home-page">
         <header className="header">
           <img src={logo} alt="Logo empresa" />
-          <button className="search-button">
-            <Search></Search>
-          </button>
         </header>
         <div className="content-page-home">
-          <p>Clique na busca para iniciar.</p>
+          <p>Search</p>
         </div>
       </div>
     )

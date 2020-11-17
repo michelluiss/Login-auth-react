@@ -1,0 +1,21 @@
+.header {
+  background-image: linear-gradient(#ee4c77 0%, #0d0430 400%);
+  flex: 0;
+  padding: gr(40) gr(20);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  img { }
+  .search-button {
+    position: absolute;
+    right: 40px;
+    background: none;
+    border: 0;
+    color: #fff;
+    svg {
+      width: gr(27);
+      height: gr(27);
+    }
+  }
+}
