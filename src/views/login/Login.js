@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { Redirect } from "react-router-dom";
 import api from '../../services/api'
 import logo from '../../assets/img/logo-home.png';
 import { Eye, EyeFill, Envelope, Lock } from 'react-bootstrap-icons';
@@ -16,6 +15,11 @@ export default class Login extends Component {
     this.setState({ showPassword: !this.state.showPassword })
   }
 
+  saveSession = (response) => {
+    const session = response.headers
+    localStorage.setItem('session-info', JSON.stringify(session))
+  }
+
   login = async () => {
     this.setState({ showLoader: true })
     try {
@@ -26,13 +30,7 @@ export default class Login extends Component {
       const response = await api.post(`users/auth/sign_in/`, params)
       this.setState({ showLoader: false })
       if (response.data.success) {
-        api.defaults.headers.common['access-token'] = response.headers['access-token']
-        api.defaults.headers.common['client'] = response.headers.client
-        api.defaults.headers.common['uid'] = response.headers.uid
-        console.log(response)
-        return(
-          <Redirect to="home"></Redirect>
-        )
+        this.saveSession(response)
       }
     } catch (error) {
       this.setState({ showLoader: false })
