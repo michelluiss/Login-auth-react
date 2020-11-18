@@ -1,7 +1,22 @@
 import React from 'react';
 import logo from '../../assets/img/logo-nav.png';
+import api from '../../services/api'
 import { Link } from 'react-router-dom';
 import { Search, X } from 'react-bootstrap-icons';
+import { DebounceInput } from 'react-debounce-input';
+
+function fetchCompany() {
+  try {
+    const params = {
+      'enterprise_types': this.state.email,
+      'name': this.state.password
+    }
+    const response = api.post(`enterprises`, params)
+    console.log(response)
+  } catch (error) {
+    console.log(error)
+  }
+}
 
 function RenderInputSearch({ showSearchInput }) {
   const [searchValue, setSearchValue] = React.useState('')
@@ -12,6 +27,10 @@ function RenderInputSearch({ showSearchInput }) {
         <div className="input-group-prepend">
           <Search></Search>
         </div>
+        <DebounceInput
+          minLength={2}
+          debounceTimeout={300}
+          onChange={() => fetchCompany()} />
         <input
           type="text"
           className="form-control"

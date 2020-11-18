@@ -4,7 +4,6 @@ import api from '../../services/api'
 import logo from '../../assets/img/logo-home.png';
 import { Eye, EyeFill, Envelope, Lock } from 'react-bootstrap-icons';
 
-
 export default class Login extends Component {
   state = {
     showPassword: false,
@@ -27,10 +26,14 @@ export default class Login extends Component {
       const response = await api.post(`users/auth/sign_in/`, params)
       this.setState({ showLoader: false })
       if (response.data.success) {
-        console.log('login')
-      } else console.log('não login')
-      console.log(response)
-      
+        api.defaults.headers.common['access-token'] = response.headers['access-token']
+        api.defaults.headers.common['client'] = response.headers.client
+        api.defaults.headers.common['uid'] = response.headers.uid
+        console.log(response)
+        return(
+          <Redirect to="home"></Redirect>
+        )
+      }
     } catch (error) {
       this.setState({ showLoader: false })
       console.log(error)
