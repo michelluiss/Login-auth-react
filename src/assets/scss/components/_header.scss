@@ -6,7 +6,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  img { }
+  svg {
+    color: #fff !important;
+  }
   .search-button {
     position: absolute;
     right: 40px;
@@ -16,6 +18,14 @@
     svg {
       width: gr(27);
       height: gr(27);
+    }
+  }
+
+  .form-control {
+    text-indent: 10px;
+    color: #fff;
+    @include input-placeholder {
+      color: #991237;
     }
   }
 }

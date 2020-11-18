@@ -46,7 +46,7 @@ export default class Login extends Component {
             <h1>BEM-VINDO AO EMPRESAS</h1>
             <p>Lorem ipsum dolor sit amet, contetur adipiscing elit. Nunc accumsan.</p>
             <form className="form-login" onSubmit={e => e.preventDefault()}>
-              <div className="input-group input-group-login mb-3">
+              <div className="input-group input-icon mb-3">
                 <div className="input-group-prepend">
                   <Envelope></Envelope>
                 </div>
@@ -59,7 +59,7 @@ export default class Login extends Component {
                 />
               </div>
 
-              <div className="input-group input-group-login mb-3">
+              <div className="input-group input-icon mb-3">
                 <div className="input-group-prepend">
                   <Lock></Lock>
                 </div>

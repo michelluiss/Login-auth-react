@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import logo from '../../assets/img/logo-nav.png';
+import Header from '../../componets/shared/Header'
 
 export default class Search extends Component {
   constructor(props) {
@@ -12,9 +12,7 @@ export default class Search extends Component {
   render() {
     return (
       <div className="home-page">
-        <header className="header">
-          <img src={logo} alt="Logo empresa" />
-        </header>
+        <Header search={true}></Header>
         <div className="content-page-home">
           <p>Search</p>
         </div>

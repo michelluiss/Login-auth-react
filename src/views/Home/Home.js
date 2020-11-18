@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
-import logo from '../../assets/img/logo-nav.png';
-import { Search} from 'react-bootstrap-icons';
+import Header from '../../componets/shared/Header'
 export default class Home extends Component {
   constructor(props) {
     super(props);
@@ -12,12 +11,8 @@ export default class Home extends Component {
   render() {
     return (
       <div className="home-page">
-        <header className="header">
-          <img src={logo} alt="Logo empresa" />
-          <button className="search-button">
-            <Search></Search>
-          </button>
-        </header>
+        <Header search={false}></Header>
+
         <div className="content-page-home">
           <p>Clique na busca para iniciar.</p>
         </div>
