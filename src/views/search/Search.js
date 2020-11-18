@@ -1,12 +1,14 @@
 import React, { Component } from 'react'
 import Header from '../../componets/shared/Header'
+import ListCompany from '../../componets/search/ListCompany'
 import api from '../../services/api'
 
 export default class Search extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      showPassword: false
+      showPassword: false,
+      listCompany: []
     };
   }
 
@@ -19,11 +21,12 @@ export default class Search extends Component {
       headers.client = session.client
       headers.uid = session.uid
       const params = {
-        'enterprise_types': 1,
+        'enterprise_types': 3,
         'name': searchValue
       }
       api.get('enterprises', { headers, params })
         .then(res => {
+          this.setState({ listCompany: res.data.enterprises })
           console.log(res.data.enterprises)
         })
         .catch(err => {
@@ -36,10 +39,12 @@ export default class Search extends Component {
 
   render() {
     return (
-      <div className="home-page">
+      <div className="search-page">
         <Header search={true} fechCompany={this.fechCompany}></Header>
-        <div className="content-page-home">
-          <p>Search</p>
+        <div className="content-page-search">
+          {this.state.listCompany.map((company, idx) => (
+            <ListCompany company={company} key={idx} />
+          ))}
         </div>
       </div>
     )
